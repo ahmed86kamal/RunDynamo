@@ -152,13 +152,21 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="run.cs" />
     <Compile Include="ViewModels\dynamoViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="DynmoScripts\test 01.dyn" />
-    <None Include="DynmoScripts\test 02.dyn" />
+    <None Include="Resources\PLM_script.dyn" />
+    <None Include="Resources\test 01.dyn" />
+    <None Include="Resources\test 02.dyn" />
+    <None Include="Resources\test 03.dyn" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -178,7 +186,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>copy "$(ProjectDir)Mainfist\IAddin.addin" "$(ProgramData)\Autodesk\REVIT\Addins\2020"</PreBuildEvent>

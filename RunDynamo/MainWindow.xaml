@@ -44,6 +44,9 @@
         <Button Content="Login" 
                 Command="{Binding login}"
                 HorizontalAlignment="Left" Height="27" Margin="58,291,0,0" VerticalAlignment="Top" Width="171" FontWeight="Bold" Grid.Row="1"/>
+        <Button Content="Run Dynamo Script" 
+            Command="{Binding run}"
+            HorizontalAlignment="Center" Height="27" Margin="0,291,0,0" VerticalAlignment="Top" Width="172" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
 
 
     </Grid>

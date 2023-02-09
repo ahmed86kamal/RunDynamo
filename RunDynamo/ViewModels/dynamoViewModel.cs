@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,15 @@ namespace RunDynamo.ViewsModels
 
 
         public ICommand login { set; get; }
-
+        public ICommand run { set; get; }
 
 
         #region UI Elements
 
         public Dictionary<string, string> bimtecUsers { get; set; } = new Dictionary<string, string>();
 
+
+        public ObservableCollection<string> ListOfScripts { get; set; } = new ObservableCollection<string>();
 
         public bool _emailOrPassActive;
 
@@ -78,17 +81,31 @@ namespace RunDynamo.ViewsModels
         #endregion
 
         public UIApplication _UIApplication { get; }
-        #region Public
 
-        #endregion
+        public Application Application { get; }
+
+        public ExternalCommandData CommandData { get; }
+    
 
         public dynamoViewModel(Autodesk.Revit.UI.UIApplication uiapp)
         {
 
             login = new login(this);
+            run = new run(this);
+            _UIApplication = uiapp;
 
 
-           
+            DirectoryInfo d = new DirectoryInfo(@"C:\Users\Badmin\source\repos\RunDynamo\RunDynamo\Resources"); //Assuming Test is your Folder
+
+            FileInfo[] Files = d.GetFiles("*.dyn"); //Getting dyn files
+            string str = "";
+
+            foreach (FileInfo file in Files)
+            {
+                str =  file.Name;
+                ListOfScripts.Add(str);
+            }
+
 
 
 
