@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>BIMTEC</Name>
+		<Text></Text>
+		<Description></Description>
+		<Assembly>RunDynamo.dll</Assembly>
+		<FullClassName>RunDynamo.App</FullClassName>
+		<ClientId>8459CF42-4E9C-45E9-9870-FDCE63AA657A</ClientId>
+		<VendorId>www.BIMTEC-ENG.com</VendorId>
+		<VendorDescription>www.BIMTEC-ENG.com</VendorDescription>
+	</AddIn>
+</RevitAddIns>
