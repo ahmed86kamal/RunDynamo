@@ -9,11 +9,15 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
+using System.Xml.Linq;
+using static Dynamo.ViewModels.SearchViewModel;
 
 namespace RunDynamo.ViewsModels
 {
@@ -44,6 +48,22 @@ namespace RunDynamo.ViewsModels
                 OnPropertyChanged(nameof(emailOrPassActive));
             }
         }
+
+
+
+        private string _SelectedScript;
+        public string SelectedScript
+        {
+            get { return _SelectedScript; }
+            set
+            {
+                _SelectedScript = value;
+                OnPropertyChanged(nameof(SelectedScript));
+            }
+        }
+
+
+        
 
         private string _UserEmailAdress;
         public string UserEmailAdress
@@ -85,7 +105,12 @@ namespace RunDynamo.ViewsModels
         public Application Application { get; }
 
         public ExternalCommandData CommandData { get; }
-    
+
+        public Assembly _assembly { get; set; } = Assembly.GetExecutingAssembly();
+
+     public Dictionary<string, Stream> StreamList = new Dictionary<string, Stream>();
+
+        public Dictionary<string, string> StreamMap = new Dictionary<string, string>();
 
         public dynamoViewModel(Autodesk.Revit.UI.UIApplication uiapp)
         {
@@ -94,17 +119,42 @@ namespace RunDynamo.ViewsModels
             run = new run(this);
             _UIApplication = uiapp;
 
+            List<string>_dynamoFileNames = new List<string> { "test 01.dyn", "test 02.dyn", "test 03.dyn", "test 04.dyn" };
 
-            DirectoryInfo d = new DirectoryInfo(@"C:\Users\Badmin\source\repos\RunDynamo\RunDynamo\Resources"); //Assuming Test is your Folder
+            foreach (string file in _dynamoFileNames)
 
-            FileInfo[] Files = d.GetFiles("*.dyn"); //Getting dyn files
-            string str = "";
-
-            foreach (FileInfo file in Files)
             {
-                str =  file.Name;
-                ListOfScripts.Add(str);
+
+                ListOfScripts.Add(file);
             }
+
+
+            foreach (var item in ListOfScripts)
+            {
+                StreamList.Add(item, _assembly.GetManifestResourceStream(typeof(run).Namespace + $".Resources.Dynamo.{item}"));
+                var x = typeof(run).Namespace + $".Resources.Dynamo.{item}";
+                StreamMap.Add(item, x);
+
+            }
+
+
+
+
+
+
+
+
+
+            //DirectoryInfo d = new DirectoryInfo(@"C:\Users\Badmin\source\repos\RunDynamo\RunDynamo\Resources\Dynamo"); //Assuming Test is your Folder
+
+            //FileInfo[] Files = d.GetFiles("*.dyn"); //Getting dyn files
+            //string str = "";
+
+            //foreach (FileInfo file in Files)
+            //{
+            //    str =  file.Name;
+            //    ListOfScripts.Add(str);
+            //}
 
 
 

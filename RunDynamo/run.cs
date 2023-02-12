@@ -4,7 +4,9 @@ using Dynamo.Applications;
 using RunDynamo.ViewsModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
@@ -55,8 +57,9 @@ namespace RunDynamo
             else
             {
 
+                var Dynamo_Journal_Path = ViewModel.StreamMap.Where(xc=>xc.Key == ViewModel.SelectedScript).ToList().FirstOrDefault().Value;
 
-                string Dynamo_Journal_Path = @"C:\Users\Badmin\source\repos\RunDynamo\RunDynamo\Resources\test 03.dyn";
+
 
 
 

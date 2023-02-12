@@ -163,18 +163,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Resources\PLM_script.dyn" />
-    <None Include="Resources\test 01.dyn" />
-    <None Include="Resources\test 02.dyn" />
-    <None Include="Resources\test 03.dyn" />
+    <EmbeddedResource Include="Resources\Dynamo\PLM_script.dyn" />
+    <EmbeddedResource Include="Resources\Dynamo\test 01.dyn" />
+    <EmbeddedResource Include="Resources\Dynamo\test 02.dyn" />
+    <EmbeddedResource Include="Resources\Dynamo\test 03.dyn" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="Resources\Dynamo\test 04.dyn" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AWSSDK.DynamoDBv2.3.7.3.24\analyzers\dotnet\cs\AWSSDK.DynamoDBv2.CodeAnalysis.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bimtec_logo.png" />
-    <Content Include="images\bimtec_logo.png" />
+    <Resource Include="images\bimtec_logo.png" />
     <Content Include="images\logo.png" />
     <Content Include="Users\Passwards.txt" />
     <Content Include="Users\Users.txt" />
@@ -192,6 +193,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>copy "$(ProjectDir)Mainfist\IAddin.addin" "$(ProgramData)\Autodesk\REVIT\Addins\2020"</PreBuildEvent>
