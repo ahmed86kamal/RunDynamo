@@ -168,7 +168,7 @@
     <EmbeddedResource Include="Resources\Dynamo\test 02.dyn" />
     <EmbeddedResource Include="Resources\Dynamo\test 03.dyn" />
     <None Include="packages.config" />
-    <EmbeddedResource Include="Resources\Dynamo\test 04.dyn" />
+    <EmbeddedResource Include="Resources\Dynamo\test04.dyn" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AWSSDK.DynamoDBv2.3.7.3.24\analyzers\dotnet\cs\AWSSDK.DynamoDBv2.CodeAnalysis.dll" />

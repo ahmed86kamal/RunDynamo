@@ -119,7 +119,7 @@ namespace RunDynamo.ViewsModels
             run = new run(this);
             _UIApplication = uiapp;
 
-            List<string>_dynamoFileNames = new List<string> { "test 01.dyn", "test 02.dyn", "test 03.dyn", "test 04.dyn" };
+            List<string>_dynamoFileNames = new List<string> { "test 01.dyn", "test 02.dyn", "test 03.dyn", "test04.dyn" };
 
             foreach (string file in _dynamoFileNames)
 
